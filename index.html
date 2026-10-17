@@ -224,7 +224,7 @@ body.intro .screen,body.offer .screen{padding-bottom:140px}
 /* ===== CONFIG ===== */
 var CHECKOUT_URL = "https://pay.cakto.com.br/7wf9jr4_1213182"; // << Cardápio da Glicose no Controle R$47
 var VIDEO_SRC = "";
-var PRICE = "47", PRICE_FROM = "291";
+var PRICE = "47", PRICE_FROM = "381";
 
 /* ===== GAMIFICATION ===== */
 var LEVELS=[{at:0,name:"Começando",emoji:"🩸"},{at:60,name:"No caminho",emoji:"🥗"},{at:120,name:"No controle",emoji:"💪"},{at:160,name:"No comando",emoji:"🎉"}];
@@ -439,19 +439,30 @@ function render(){
       '<figure><img loading="lazy" src="depo3.webp" alt="Relato" onload="document.getElementById(\'proofWrap\').style.display=\'block\'" onerror="this.closest(\'figure\').style.display=\'none\'"></figure>'+
       '<figure><img loading="lazy" src="depo4.webp" alt="Relato" onload="document.getElementById(\'proofWrap\').style.display=\'block\'" onerror="this.closest(\'figure\').style.display=\'none\'"></figure>'+
       '</div></div>';
+    // Authority / origin (honest — no fake testimonial)
+    html+='<div class="center" style="margin-top:24px"><div class="eyebrow">De onde vem o método</div><h1 class="q" style="font-size:22px;margin-top:4px">Por que o Prato Semáforo funciona</h1></div>';
+    html+='<div class="guar" style="display:block;background:#f3fbf4;border-color:#cdebd4"><p style="margin:0">O <b>Método do Prato Semáforo</b> não é dieta da moda nem fórmula inventada. Ele adapta, pra linguagem simples do dia a dia, o <b>"método do prato"</b> — a mesma lógica de montar a refeição por grupos (o que pode à vontade, o que vai com moderação e o que evitar) que nutricionistas e guias de alimentação do mundo todo já usam há anos com quem convive com diabetes.</p><p style="margin:10px 0 0">A diferença aqui é que a gente já fez o trabalho por você: transformou essa lógica em <b>lista pronta, 500 receitas e cardápio montado</b>. Você não precisa estudar nada — é só abrir e seguir. <b>Sempre junto com o seu médico</b>, nunca no lugar dele.</p></div>';
     html+='<div class="center" style="margin-top:24px"><div class="eyebrow">A oferta completa</div><h1 class="q" style="font-size:22px;margin-top:4px">Tudo isto entra no seu acesso hoje</h1></div>';
     html+='<div class="gifts"><h3>Reservado no nome de '+(name||"você")+'</h3>'+
       gline("🍽️","Cardápio da Glicose no Controle","500 receitas gostosas pra café, almoço, jantar, lanches e sobremesas — pensadas pra quem convive com diabetes.","R$127")+
-      gline("🥗","Lista de Alimentos Semáforo","O guia verde / amarelo / vermelho: o que comer à vontade, com moderação e o que evitar. Nunca mais fique perdida no mercado.","R$47")+
+      gline("🥗","Lista de Alimentos Semáforo","O guia verde / amarelo / vermelho: o que comer à vontade, com moderação e o que evitar. Nunca mais fique perdida no mercado.","R$57")+
       gline("📅","Planner de Controle da Glicose","Pra registrar refeições e acompanhar sua evolução de perto, criando o hábito que se mantém sozinho.","R$47")+
-      gline("⚡","Ideias de Refeição Rápida","Combinações prontas pra montar o prato em minutos nos dias corridos.","R$37")+
-      gline("🎁","Pacote de Bônus","Guias extras de apoio pra facilitar ainda mais o seu dia a dia.","R$33")+
-      '<div class="gline totalv"><span class="ge">🧾</span><div><b>Valor total</b><p>Tudo acima, se vendido separado</p></div><span class="gv totalp">R$291</span></div>'+
       '</div>';
-    html+='<div class="pricebox"><div class="from">Valor total R$291</div><div class="now">R$'+PRICE+'</div><div class="once">Pagamento único · acesso imediato · sem mensalidade</div></div>';
+    // Bonus stack — each one kills a specific objection
+    html+='<div class="center" style="margin-top:20px"><div class="eyebrow">E ainda leva de brinde</div><h1 class="q" style="font-size:22px;margin-top:4px">4 bônus pra você não travar em nada</h1></div>';
+    html+='<div class="gifts"><h3>Bônus que vêm junto hoje</h3>'+
+      gline("🗓️","BÔNUS 1 — Semana Pronta","7 dias de cardápio já montado, do café ao jantar. Você nem precisa pensar: abre e segue. (Mata o “não sei por onde começar”.)","R$47")+
+      gline("⏱️","BÔNUS 2 — 15 Minutos no Fogão","Receitas express e ideias de marmita pros dias corridos. (Mata o “não tenho tempo de cozinhar”.)","R$37")+
+      gline("🎉","BÔNUS 3 — Guia Sobrevivência","Como se virar em festa, restaurante e viagem sem sair da linha nem passar vergonha. (Mata o “vou furar no fim de semana”.)","R$37")+
+      gline("🔄","BÔNUS 4 — Trocas Inteligentes","A lista de “troco isso por aquilo” pra adaptar qualquer refeição ao seu gosto. (Mata o “será que serve pro meu caso”.)","R$29")+
+      '<div class="gline totalv"><span class="ge">🧾</span><div><b>Valor total de tudo</b><p>Material + 4 bônus, se vendido separado</p></div><span class="gv totalp">R$'+PRICE_FROM+'</span></div>'+
+      '</div>';
+    // Anchor against the real alternative
+    html+='<div class="note" style="margin-top:16px;background:#fff6e6;border:1.5px solid #f0d49a;border-radius:16px;padding:14px 16px;font-size:14px"><b>Compare com o que você gastaria de verdade:</b> uma única consulta de nutricionista sai de R$250 a R$400 — e você precisa de várias. Só o cardápio e a lista semáforo já fariam o trabalho de meses de consulta. Aqui é <b>tudo isso por uma fração, pagamento único.</b></div>';
+    html+='<div class="pricebox"><div class="from">Valor total R$'+PRICE_FROM+'</div><div class="now">R$'+PRICE+'</div><div class="once">Pagamento único · acesso imediato · sem mensalidade</div></div>';
     // Guarantee
-    html+='<div class="guar"><div style="font-size:40px;flex:none">🛡️</div><div><b>Garantia incondicional de 7 dias</b><p>Entre, veja todo o material e comece a montar seus pratos. Se em 7 dias não for pra você, é só mandar um e-mail que devolvemos 100% do valor — e você <b>fica com os bônus</b>. O risco é todo nosso.</p></div></div>';
-    html+='<div class="sealrow"><span class="seal">🔒 Compra segura</span><span class="seal">⚡ Acesso imediato</span><span class="seal">♾️ Vitalício</span><span class="seal">↩️ 7 dias de garantia</span></div>';
+    html+='<div class="guar"><div style="font-size:40px;flex:none">🛡️</div><div><b>Garantia "Prato Certo" de 30 dias</b><p>Entre, abra a lista semáforo e monte seu primeiro cardápio da semana. Se em <b>30 dias</b> você sentir que não ficou mais simples comer sem medo e sem viver de salada, manda um e-mail que devolvemos <b>100% do valor</b> — e você <b>fica com todos os bônus</b>. O risco é todo nosso.</p></div></div>';
+    html+='<div class="sealrow"><span class="seal">🔒 Compra segura</span><span class="seal">⚡ Acesso imediato</span><span class="seal">♾️ Vitalício</span><span class="seal">↩️ 30 dias de garantia</span></div>';
     // FAQ — objection crushing (health-safe)
     html+='<div class="center" style="margin-top:22px"><div class="eyebrow">Ainda com dúvida?</div><h1 class="q" style="font-size:22px;margin-top:4px">Perguntas que todo mundo faz</h1></div>';
     html+='<div class="faq">'+
@@ -461,20 +472,20 @@ function render(){
       faq("Serve pra pré-diabetes e pra quem já tem diabetes tipo 2?","O material foi pensado pra quem convive com glicose alta, pré-diabetes e diabetes tipo 2. Sempre adapte ao que o seu médico orienta pro seu caso.")+
       faq("As receitas são difíceis ou de ingrediente caro?","Não. São pratos do dia a dia, com ingredientes do mercado comum. A família come junto, sem precisar cozinhar duas vezes.")+
       faq("É pagamento único mesmo?","Sim. Você paga R$"+PRICE+" uma vez só e o acesso é vitalício, sem mensalidade.")+
-      faq("E se eu não gostar?","Você tem 7 dias de garantia. Se não for pra você, manda um e-mail e devolvemos 100% — e ainda fica com os bônus.")+
+      faq("E se eu não gostar?","Você tem 30 dias de garantia. Se não for pra você, manda um e-mail e devolvemos 100% — e ainda fica com os bônus.")+
       '</div>';
     // Recap as fact (Amanda close)
     html+='<div class="guar" style="margin-top:22px;display:block"><h3 style="margin:0 0 8px;font-size:18px">Olha o que acontece quando você garante hoje, '+(name||"amiga")+':</h3>'+
       '<p style="margin:0 0 6px">✅ Em <b>2 minutos</b> você abre a lista semáforo e já sabe montar a próxima refeição — sem dúvida e sem medo.</p>'+
       '<p style="margin:0 0 6px">✅ Volta a comer <b>arroz, feijão, pão e até sobremesa</b> do jeito certo, a família junto, sem cozinhar duas vezes.</p>'+
       '<p style="margin:0 0 6px">✅ Troca a confusão e a culpa por um <b>plano simples que se mantém sozinho</b> — pra somar ao que o seu médico já orienta.</p>'+
-      '<p style="margin:10px 0 0"><b>É R$'+PRICE+' uma vez só</b> por tudo isso (valor cheio R$'+PRICE_FROM+'), acesso na hora, vitalício, com <b>7 dias de garantia</b>. Se não for pra você, devolvemos 100% e você fica com os bônus. O risco é todo nosso — a única forma de sair perdendo é fechar esta página e continuar na dúvida de todo dia.</p></div>';
+      '<p style="margin:10px 0 0"><b>É R$'+PRICE+' uma vez só</b> por tudo isso (valor cheio R$'+PRICE_FROM+'), acesso na hora, vitalício, com <b>30 dias de garantia</b>. Se não for pra você, devolvemos 100% e você fica com os bônus. O risco é todo nosso — a única forma de sair perdendo é fechar esta página e continuar na dúvida de todo dia.</p></div>';
     html+='<p class="sub center" style="margin-top:16px">Toque no botão, finalize no Pix ou cartão e receba <b>na hora</b>, no WhatsApp e no e-mail, todo o material.</p>';
     html+='<div class="disc">Aviso importante: este é um produto educacional de alimentação e <b>não substitui acompanhamento médico, diagnóstico ou tratamento</b>. Não interrompa nem altere qualquer medicação por conta própria — fale sempre com o seu médico. Resultados variam de pessoa para pessoa e não são garantidos. Os valores mostrados são ilustrativos.</div>';
     scr.innerHTML=html;
     showCTA("Quero meu plano agora →","🔒 Checkout seguro · acesso na hora");
     cnote.innerHTML="🔒 Checkout seguro · acesso na hora";
-    var u=document.createElement('div'); u.className='urg'; u.textContent='⏳ Preço de lançamento — só nesta rodada, depois volta a subir'; cnote.parentNode.insertBefore(u,cnote.nextSibling);
+    var u=document.createElement('div'); u.className='urg'; u.textContent='⏳ Preço de lançamento R$'+PRICE+' — nesta rodada. Quando fechar, sobe pra R$67.'; cnote.parentNode.insertBefore(u,cnote.nextSibling);
     ctaBtn.onclick=function(){
       try{ if(window.fbq) fbq('track','InitiateCheckout',{value:parseFloat(PRICE),currency:'BRL'}); }catch(e){}
       if(CHECKOUT_URL && CHECKOUT_URL.indexOf('http')===0){ location.href=CHECKOUT_URL+(location.search||""); }
