@@ -412,12 +412,18 @@ function render(){
   }
 
   if(s.k==="result"){
-    html+='<div class="center"><div class="eyebrow">🎉 Plano pronto</div>';
-    html+='<h1 class="q" style="margin-top:6px">Prontinho, '+(name||"amiga")+'! Seu plano está montado e você desbloqueou R$'+earned+' em bônus grátis dentro do Cardápio da Glicose no Controle</h1></div>';
-    html+='<p class="lede center" style="font-size:15px">Tudo abaixo está reservado no seu nome. Toque no botão e receba o acesso na hora, no seu WhatsApp e e-mail — e já comece hoje a montar o prato certo.</p>';
+    html+='<div class="center"><div class="eyebrow">🎉 Seu plano está pronto, '+(name||"amiga")+'</div>';
+    html+='<h1 class="q" style="margin-top:6px">A partir de hoje, '+(name||"amiga")+', você <span class="hlg">nunca mais olha pro prato sem saber o que pode comer</span> — e para de viver de salada por medo da glicose.</h1></div>';
+    html+='<p class="lede center" style="font-size:15.5px">Chega de te mandarem <b>cortar tudo</b>, chega de boiar no mercado e chega da culpa depois de comer. Com o <span class="hl">Método do Prato Semáforo</span> você monta <b>cada refeição</b> — café, almoço, jantar, lanche e até a sobremesa — por uma regra simples de <b>verde, amarelo e vermelho</b>. Comendo comida de verdade: arroz, feijão, pão, carne. <b>Sem passar fome. Sem ser nutricionista. Sem fórmula milagrosa.</b></p>';
     if(VIDEO_SRC){ html+='<div class="vwrap"><video controls playsinline poster="hero-food.webp" style="width:100%;height:100%;object-fit:cover"><source src="'+VIDEO_SRC+'" type="video/mp4"></video></div>'; }
     html+='<img class="hero-img" loading="lazy" src="cardapio-mock.webp" alt="Cardápio da Glicose no Controle no tablet" style="border-radius:16px;margin-top:8px">';
-    html+='<p class="sub center" style="margin-top:8px">500 receitas pensadas pra quem convive com diabetes e pré-diabetes.</p>';
+    html+='<p class="sub center" style="margin-top:8px"><b>500 receitas</b> prontas pra quem convive com glicose alta, pré-diabetes e diabetes tipo 2 — organizadas pela lista semáforo, do café à sobremesa.</p>';
+    // Reframe — what changes starting today (dopamine)
+    html+='<div class="gifts" style="margin-top:18px"><h3>O que muda a partir de hoje</h3>'+
+      gline("🚦","Fim da dúvida no prato","Bate o olho na lista e já sabe: isso eu como à vontade, isso com moderação, isso eu troco. Toda refeição, em segundos.")+
+      gline("🍽️","Comida de verdade de volta","Arroz, feijão, pão e até docinho — do jeito certo. Você para de viver de salada e a família come junto, sem cozinhar duas vezes.")+
+      gline("😌","Comer sem culpa e sem medo","Você monta o prato com segurança, sente mais leveza depois das refeições e para de se cobrar o tempo todo.")+
+      '</div>';
     // How it works — digital delivery
     html+='<div class="center" style="margin-top:22px"><div class="eyebrow">Como funciona</div><h1 class="q" style="font-size:22px;margin-top:4px">Do pagamento ao prato certo, hoje</h1></div>';
     html+='<div class="steps">'+
@@ -433,7 +439,8 @@ function render(){
       '<figure><img loading="lazy" src="depo3.webp" alt="Relato" onload="document.getElementById(\'proofWrap\').style.display=\'block\'" onerror="this.closest(\'figure\').style.display=\'none\'"></figure>'+
       '<figure><img loading="lazy" src="depo4.webp" alt="Relato" onload="document.getElementById(\'proofWrap\').style.display=\'block\'" onerror="this.closest(\'figure\').style.display=\'none\'"></figure>'+
       '</div></div>';
-    html+='<div class="gifts"><h3>Tudo que você recebe hoje</h3>'+
+    html+='<div class="center" style="margin-top:24px"><div class="eyebrow">A oferta completa</div><h1 class="q" style="font-size:22px;margin-top:4px">Tudo isto entra no seu acesso hoje</h1></div>';
+    html+='<div class="gifts"><h3>Reservado no nome de '+(name||"você")+'</h3>'+
       gline("🍽️","Cardápio da Glicose no Controle","500 receitas gostosas pra café, almoço, jantar, lanches e sobremesas — pensadas pra quem convive com diabetes.","R$127")+
       gline("🥗","Lista de Alimentos Semáforo","O guia verde / amarelo / vermelho: o que comer à vontade, com moderação e o que evitar. Nunca mais fique perdida no mercado.","R$47")+
       gline("📅","Planner de Controle da Glicose","Pra registrar refeições e acompanhar sua evolução de perto, criando o hábito que se mantém sozinho.","R$47")+
@@ -456,7 +463,13 @@ function render(){
       faq("É pagamento único mesmo?","Sim. Você paga R$"+PRICE+" uma vez só e o acesso é vitalício, sem mensalidade.")+
       faq("E se eu não gostar?","Você tem 7 dias de garantia. Se não for pra você, manda um e-mail e devolvemos 100% — e ainda fica com os bônus.")+
       '</div>';
-    html+='<p class="sub center" style="margin-top:16px">Depois do pagamento, você recebe no WhatsApp e no e-mail todo o material — na hora.</p>';
+    // Recap as fact (Amanda close)
+    html+='<div class="guar" style="margin-top:22px;display:block"><h3 style="margin:0 0 8px;font-size:18px">Olha o que acontece quando você garante hoje, '+(name||"amiga")+':</h3>'+
+      '<p style="margin:0 0 6px">✅ Em <b>2 minutos</b> você abre a lista semáforo e já sabe montar a próxima refeição — sem dúvida e sem medo.</p>'+
+      '<p style="margin:0 0 6px">✅ Volta a comer <b>arroz, feijão, pão e até sobremesa</b> do jeito certo, a família junto, sem cozinhar duas vezes.</p>'+
+      '<p style="margin:0 0 6px">✅ Troca a confusão e a culpa por um <b>plano simples que se mantém sozinho</b> — pra somar ao que o seu médico já orienta.</p>'+
+      '<p style="margin:10px 0 0"><b>É R$'+PRICE+' uma vez só</b> por tudo isso (valor cheio R$'+PRICE_FROM+'), acesso na hora, vitalício, com <b>7 dias de garantia</b>. Se não for pra você, devolvemos 100% e você fica com os bônus. O risco é todo nosso — a única forma de sair perdendo é fechar esta página e continuar na dúvida de todo dia.</p></div>';
+    html+='<p class="sub center" style="margin-top:16px">Toque no botão, finalize no Pix ou cartão e receba <b>na hora</b>, no WhatsApp e no e-mail, todo o material.</p>';
     html+='<div class="disc">Aviso importante: este é um produto educacional de alimentação e <b>não substitui acompanhamento médico, diagnóstico ou tratamento</b>. Não interrompa nem altere qualquer medicação por conta própria — fale sempre com o seu médico. Resultados variam de pessoa para pessoa e não são garantidos. Os valores mostrados são ilustrativos.</div>';
     scr.innerHTML=html;
     showCTA("Quero meu plano agora →","🔒 Checkout seguro · acesso na hora");
