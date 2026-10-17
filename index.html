@@ -237,7 +237,7 @@ function setEarn(add){ if(add){earned+=add;} document.getElementById('earnAmt').
 var STEPS=[
  {k:"intro",eyebrow:"Método do Prato Semáforo · Glicose sob controle comendo comida de verdade",
   h:'Enquanto te mandam <span class="hlr">cortar tudo e viver de salada</span> — e ainda empurram mais um remédio — existe um jeito simples de montar o prato que <span class="hlg">ajuda a manter a glicose no controle</span> comendo comida gostosa, <b>sem passar fome</b>.',
-  img:"hero-food.webp",
+  img:"hero-food.webp",vid:"ad1.mp4",poster:"hero-food.webp",
   lede:'É o <span class="hl">Método do Prato Semáforo</span>: você aprende a montar cada refeição pela lista <b>verde / amarelo / vermelho</b>, com <b>500 receitas prontas</b> pensadas pra quem convive com diabetes e pré-diabetes. Sem dieta maluca, sem cortar tudo que gosta, sem fórmula milagrosa. Responda algumas perguntas rápidas e <b>monte seu plano personalizado</b> — e desbloqueie bônus grátis que já vêm junto.',
   note:"Importante: este material é educacional e NÃO substitui o acompanhamento do seu médico. Nunca pare nem mude a medicação por conta própria. Responda abaixo em menos de 3 minutos.",
   cta:"Montar meu plano"},
@@ -262,6 +262,7 @@ var STEPS=[
   opts:["Cortei tudo que gosto e não aguentei.","Só tomo o remédio e sigo comendo igual.","Já fiz várias dietas, mas nenhuma durou.","Nunca tentei de verdade, não sei por onde começar."]},
 
  {k:"tiles",h:"Por que o Prato Semáforo vence a dieta de sofrimento",cta:"Faz sentido, continuar",
+  img:"prato-semaforo.webp",alt:"Prato dividido em verde, amarelo e vermelho",
   tiles:[
    {e:"🍽️",t:"Você come comida de verdade",p:"Arroz, feijão, carne, pão, até sobremesa — do jeito certo. Sem viver de folha e sem passar fome."},
    {e:"🚦",t:"Simples feito semáforo",p:"Verde pode, amarelo com moderação, vermelho evita. Fim da dúvida 'será que posso comer isso?'."},
@@ -277,9 +278,11 @@ var STEPS=[
   opts:["Eu cozinho quase todo dia.","Cozinho às vezes, no básico.","Quase não cozinho / como o que tem.","Alguém da família cozinha pra mim."]},
 
  {k:"note",emo:"🤗",h:"Fica tranquila, {nome}. Aqui é simples e passo a passo",
-  body:"Você não precisa ser nutricionista, não precisa cortar tudo que ama e não precisa de ingrediente caro. Vai aprender a montar o prato certo com comida comum, do seu jeito — e com receita pronta pra cada refeição do dia.",cta:"Continuar"},
+  body:"Você não precisa ser nutricionista, não precisa cortar tudo que ama e não precisa de ingrediente caro. Vai aprender a montar o prato certo com comida comum, do seu jeito — e com receita pronta pra cada refeição do dia.",cta:"Continuar",
+  img:"antes-depois.webp",alt:"Mulher preparando uma refeição saudável em casa"},
 
  {k:"tiles",h:"O que você vai aprender a montar — pra todo momento do dia",cta:"Quero essas receitas",
+  img:"lanches.webp",alt:"Lanches saudáveis para quem controla a glicose",
   tiles:[
    {e:"🍳",t:"Café da manhã",p:"Comece o dia sem pico de glicose e com energia que dura."},
    {e:"🥘",t:"Almoço e jantar",p:"Pratos gostosos e completos, do arroz com feijão ao que a família pede."},
@@ -368,11 +371,14 @@ function render(){
     html+='<div class="center" style="font-size:40px">'+s.emo+'</div>';
     html+='<h1 class="q center">'+p(s.h)+'</h1>';
     html+='<p class="lede">'+p(s.body)+'</p>';
+    if(s.img){ html+='<img class="hero-img" loading="lazy" src="'+s.img+'" alt="'+(s.alt||'')+'" style="border-radius:16px;margin-top:6px">'; }
     scr.innerHTML=html; showCTA(s.cta+" →"); ctaBtn.onclick=next; return;
   }
 
   if(s.k==="tiles"){
-    html+='<h1 class="q">'+p(s.h)+'</h1><div class="tiles">';
+    html+='<h1 class="q">'+p(s.h)+'</h1>';
+    if(s.img){ html+='<img class="hero-img" loading="lazy" src="'+s.img+'" alt="'+(s.alt||'')+'" style="border-radius:16px;margin:4px 0 14px">'; }
+    html+='<div class="tiles">';
     s.tiles.forEach(function(t){ html+='<div class="tile"><span class="emo">'+t.e+'</span><div><b>'+t.t+'</b><p>'+t.p+'</p></div></div>'; });
     html+='</div>';
     scr.innerHTML=html; showCTA(s.cta+" →"); ctaBtn.onclick=next; return;
@@ -410,7 +416,7 @@ function render(){
     html+='<h1 class="q" style="margin-top:6px">Prontinho, '+(name||"amiga")+'! Seu plano está montado e você desbloqueou R$'+earned+' em bônus grátis dentro do Cardápio da Glicose no Controle</h1></div>';
     html+='<p class="lede center" style="font-size:15px">Tudo abaixo está reservado no seu nome. Toque no botão e receba o acesso na hora, no seu WhatsApp e e-mail — e já comece hoje a montar o prato certo.</p>';
     if(VIDEO_SRC){ html+='<div class="vwrap"><video controls playsinline poster="hero-food.webp" style="width:100%;height:100%;object-fit:cover"><source src="'+VIDEO_SRC+'" type="video/mp4"></video></div>'; }
-    html+='<img class="hero-img" src="hero-food.webp" alt="Pratos saudáveis para controle da glicose" style="border-radius:16px;margin-top:8px">';
+    html+='<img class="hero-img" loading="lazy" src="cardapio-mock.webp" alt="Cardápio da Glicose no Controle no tablet" style="border-radius:16px;margin-top:8px">';
     html+='<p class="sub center" style="margin-top:8px">500 receitas pensadas pra quem convive com diabetes e pré-diabetes.</p>';
     // How it works — digital delivery
     html+='<div class="center" style="margin-top:22px"><div class="eyebrow">Como funciona</div><h1 class="q" style="font-size:22px;margin-top:4px">Do pagamento ao prato certo, hoje</h1></div>';
